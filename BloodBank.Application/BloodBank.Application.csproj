@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\IRepository\" />
     <Folder Include="Interfaces\IRepository\IAuthenticationRepo\" />
     <Folder Include="Services\AuthenticationService\" />
   </ItemGroup>
