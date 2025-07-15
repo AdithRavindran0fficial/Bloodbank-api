@@ -9,6 +9,6 @@ namespace BloodBank.Application.Interfaces.IRepository.IBaseRepo
 {
     public interface IBloodGroupRepository
     {
-        Task<BloodGroupModel?> GetBloodGroupsAsync();
+        Task<IEnumerable< BloodGroupModel?>> GetBloodGroupsAsync();
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BloodBank.Application.DTOs.Base_Dtos
 {
-    public interface BloodGroupDTO
+   public class BloodGroupDTO
     {
         public int BloodId { get; set; }
-        public string BloodGroup { get; set; }
+        public string? BloodGroup { get; set; }
     }
 }
