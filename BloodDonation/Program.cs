@@ -1,3 +1,7 @@
+using BloodBank.Application.Interfaces.IRepository.IBaseRepo;
+using BloodBank.Application.Interfaces.IServices.IBase_Services;
+using BloodBank.Application.Services.BaseService;
+using BloodBank.Infrastructure.Base_Repository;
 using BloodBank.Infrastructure.DbContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<DapperContext>();
+builder.Services.AddScoped<IBloodGroupRepository, BloodGroupRepository>();
+builder.Services.AddScoped<IBloodGroupService, BloodGroupService>();
 
 var app = builder.Build();
 
