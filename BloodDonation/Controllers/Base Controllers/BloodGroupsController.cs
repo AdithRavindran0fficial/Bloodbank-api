@@ -14,6 +14,12 @@ namespace BloodDonation.Controllers.Base_Controllers
             groupService = bloodGroupService;
 
         }
+        [HttpGet("BloodGroups")]
+        public async Task<IActionResult> GetBloodGroups()
+        {
+            var result = await groupService.GetBloodGroups();
+            return Ok(result);
+        }
 
     }
 }
