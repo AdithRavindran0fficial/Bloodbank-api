@@ -33,7 +33,7 @@ namespace BloodBank.Application.Services.BaseService
                     }).ToList();
                     return new ApiResponse<List<BloodGroupDTO>>("success", 200, dto);
                 }
-                return new ApiResponse<List<BloodGroupDTO>>("success", 200);
+                return new ApiResponse<List<BloodGroupDTO>>("No blood groups found", 200);
 
             }
             catch(Exception ex)
