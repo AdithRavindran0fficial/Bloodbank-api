@@ -17,9 +17,9 @@ namespace BloodBank.Application.Common.Response
             Message = messsage;
             Data = data;
             Status = status;
-
-
-        }
+            
+                
+       }
 
     }
 }
