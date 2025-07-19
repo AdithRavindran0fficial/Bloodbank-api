@@ -1,6 +1,10 @@
+using BloodBank.Application.Interfaces.IRepository.IAuthenticationRepo.IDonorRepo;
 using BloodBank.Application.Interfaces.IRepository.IBaseRepo;
+using BloodBank.Application.Interfaces.IServices.IAuthenticationService.Donor;
 using BloodBank.Application.Interfaces.IServices.IBase_Services;
+using BloodBank.Application.Services.AuthenticationService.Donor;
 using BloodBank.Application.Services.BaseService;
+using BloodBank.Infrastructure.AuthenticationRepo.DonorRepo;
 using BloodBank.Infrastructure.Base_Repository;
 using BloodBank.Infrastructure.DbContext;
 
@@ -15,6 +19,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IBloodGroupRepository, BloodGroupRepository>();
 builder.Services.AddScoped<IBloodGroupService, BloodGroupService>();
+builder.Services.AddScoped<IDonorRegistrationService, DonorRegistrationService>();
+builder.Services.AddScoped<IDonorRegistration, DonorRegistration>();
+
 
 var app = builder.Build();
 
