@@ -2,6 +2,7 @@
 using BloodBank.Application.Interfaces.IRepository.IAuthenticationRepo.IDonorRepo;
 using BloodBank.Domain.Model.DonorModels;
 using BloodBank.Infrastructure.DbContext;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace BloodBank.Infrastructure.AuthenticationRepo.DonorRepo
         {
             dapperContext = context;
         }
-        public Task<bool> RegisterDonor(DonorDto donor)
+        public async Task<bool> RegisterDonor(DonorDto donor)
         {
             try
             {
@@ -30,20 +31,24 @@ namespace BloodBank.Infrastructure.AuthenticationRepo.DonorRepo
                         BloodGroup = donor.BloodGroup,
                         Dob = donor.DOB,
                         IsAllowed = true,
-                        IsBlocked = true,
+                        IsBlocked = false,
                         LastDonation = null,
-                        Password = donor.Password
-
+                        Password = donor.Password,
+                        CreatedAt = DateTime.UtcNow
                     };
-                    //var sql = "insert into Donor values(@Name,@Phone,IsAllowed)"
 
+                 
+                    var sql = "INSERT INTO Donor VALUES (@Name, @Phone, @IsAllowed, @CreatedAt, @LastDonation, @IsBlocked, @Dob,@BloodGroup,@Password)";
+                    var result = await  connection.ExecuteAsync(sql, Donor);
+                    return result>0;
                 }
 
 
             }
             catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
+                
             }
         }
     }
