@@ -15,8 +15,4 @@
     <ProjectReference Include="..\BloodBank.Infrastructure\BloodBank.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Authentication Controller\" />
-  </ItemGroup>
-
 </Project>

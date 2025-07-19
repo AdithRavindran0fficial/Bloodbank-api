@@ -10,8 +10,4 @@
     <ProjectReference Include="..\BloodBank.Domain\BloodBank.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\AuthenticationService\" />
-  </ItemGroup>
-
 </Project>
