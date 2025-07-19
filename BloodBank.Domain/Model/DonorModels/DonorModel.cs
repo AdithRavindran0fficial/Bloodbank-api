@@ -17,6 +17,7 @@ namespace BloodBank.Domain.Model.DonorModels
        public bool IsAllowed { get; set; }  
         public bool IsBlocked { get; set; } 
         public string? Password { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
     }
 }
