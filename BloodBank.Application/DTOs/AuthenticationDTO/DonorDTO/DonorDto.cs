@@ -13,7 +13,7 @@ namespace BloodBank.Application.DTOs.AuthenticationDTO.DonorDTO
         [Required]
         public string? Name { get; set; }
         [Required]
-        public DateTime? DOB { get; set; }
+        public DateTime DOB { get; set; }
         [Required]
         public int BloodGroup { get; set; }
         [Required]
