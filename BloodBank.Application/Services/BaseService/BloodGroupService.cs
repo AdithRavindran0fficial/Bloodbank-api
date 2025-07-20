@@ -31,15 +31,15 @@ namespace BloodBank.Application.Services.BaseService
                         BloodGroup = s.BloodGroup,
                         BloodId = s.BloodId
                     }).ToList();
-                    return new ApiResponse<List<BloodGroupDTO>>("success", 200, dto);
+                    return new ApiResponse<List<BloodGroupDTO>>("success", 200, true, dto);
                 }
-                return new ApiResponse<List<BloodGroupDTO>>("No blood groups found", 200);
+                return new ApiResponse<List<BloodGroupDTO>>("No blood groups found", 200,false);
 
             }
             catch(Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return new ApiResponse<List<BloodGroupDTO>>("Internal Server error", 500);
+                return new ApiResponse<List<BloodGroupDTO>>("Internal Server error", 500,false);
             }
         }
     }
