@@ -22,12 +22,15 @@ namespace BloodBank.Application.Services.AuthenticationService.Donor
         {
             try
             {
+                var Age = donor.DOB.Year - DateTime.Now.Year;
+                if (donor.DOB.Date > DateTime.Now.AddYears(-Age)) Age--;
+                if (Age < 18) return new ApiResponse<object>("Your not eligible to donate", 200, false);
                 var result = await donorRegistration.RegisterDonor(donor);
                 if (result)
                 {
-                    return new ApiResponse<object>("Registration Successful", 200);
+                    return new ApiResponse<object>("Registration Successful", 200,true);
                 }
-                return new ApiResponse<object>("Registration Failed", 200);
+                return new ApiResponse<object>("Registration Failed", 200,true);
 
             }
             catch (Exception ex)

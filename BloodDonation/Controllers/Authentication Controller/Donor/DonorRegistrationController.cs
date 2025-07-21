@@ -26,7 +26,7 @@ namespace BloodDonation.Controllers.Authentication_Controller.Donor
 
             }catch(Exception ex)
             {
-                return StatusCode(500,new ApiResponse<object>("Internal Server error", 500));
+                return StatusCode(500,new ApiResponse<object>("Internal Server error", 500,false));
 
             }
         }

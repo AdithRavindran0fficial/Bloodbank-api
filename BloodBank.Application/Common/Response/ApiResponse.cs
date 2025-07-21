@@ -11,12 +11,14 @@ namespace BloodBank.Application.Common.Response
         public string Message { get; set; }
         public T? Data { get; set; }
         public int Status { get; set; }
-        public ApiResponse( string messsage , int status,T? data = default )
+        public bool Success { get; set; }
+        public ApiResponse( string messsage , int status, bool success, T? data = default)
         {
             
             Message = messsage;
             Data = data;
             Status = status;
+            Success = success;
             
                 
        }
