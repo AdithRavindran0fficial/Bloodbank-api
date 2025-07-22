@@ -1,5 +1,7 @@
 ﻿using BloodBank.Application.Interfaces.IRepository.IHelperRepo;
+using BloodBank.Domain.Model.DonorModels;
 using BloodBank.Infrastructure.DbContext;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +19,26 @@ namespace BloodBank.Infrastructure.HelperRepo
             dbContext = context;
         }
 
-        public Task<bool> IsUserExits(string UserName, string Phone)
+        public async Task<bool> IsUserExits(string UserName, string Phone)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = dbContext.CreateConnection())
+                {
+                    var sql = "select * from Donor where Phone=@Phone";
+                    var result = await connection.QueryFirstOrDefaultAsync<DonorModel>(sql, Phone);
+                    if (result != null)
+                    {
+                        return false;
+                    }
+                    return true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
