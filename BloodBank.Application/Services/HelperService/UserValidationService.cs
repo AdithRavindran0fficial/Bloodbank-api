@@ -18,7 +18,15 @@ namespace BloodBank.Application.Services.HelperService
 
         public Task<bool> IsUserExistsAsync(string UserName, string phone)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = _repo.IsUserExits(UserName, phone);
+                return result;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
