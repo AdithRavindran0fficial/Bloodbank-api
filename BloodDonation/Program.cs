@@ -7,6 +7,7 @@ using BloodBank.Application.Interfaces.IServices.IHelperService;
 using BloodBank.Application.Services.AuthenticationService.Donor;
 using BloodBank.Application.Services.BaseService;
 using BloodBank.Application.Services.HelperService;
+using BloodBank.Application.Services.HelperService.Password_Bcrypt;
 using BloodBank.Infrastructure.AuthenticationRepo.DonorRepo;
 using BloodBank.Infrastructure.Base_Repository;
 using BloodBank.Infrastructure.DbContext;
@@ -26,7 +27,8 @@ builder.Services.AddScoped<IBloodGroupService, BloodGroupService>();
 builder.Services.AddScoped<IDonorRegistrationService, DonorRegistrationService>();
 builder.Services.AddScoped<IDonorRegistration, DonorRegistration>();
 builder.Services.AddScoped<IUserValidationRepo,UserValidationRepo>();
-builder.Services.AddScoped<IUserValidationService, UserValidationService>();    
+builder.Services.AddScoped<IUserValidationService, UserValidationService>();  
+builder.Services.AddScoped<IPasswordHash,PasswordHash>();
 
 
 var app = builder.Build();
