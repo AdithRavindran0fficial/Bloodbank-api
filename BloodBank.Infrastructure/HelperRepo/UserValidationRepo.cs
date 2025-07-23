@@ -26,7 +26,7 @@ namespace BloodBank.Infrastructure.HelperRepo
                 using (var connection = dbContext.CreateConnection())
                 {
                     var sql = "select * from Donor where Phone=@Phone";
-                    var result = await connection.QueryFirstOrDefaultAsync<DonorModel>(sql, Phone);
+                    var result = await connection.QueryFirstOrDefaultAsync<DonorModel>(sql, new { Phone = Phone });
                     if (result != null)
                     {
                         return false;
