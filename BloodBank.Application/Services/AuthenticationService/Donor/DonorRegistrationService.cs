@@ -3,6 +3,7 @@ using BloodBank.Application.DTOs.AuthenticationDTO.DonorDTO;
 using BloodBank.Application.DTOs.Base_Dtos;
 using BloodBank.Application.Interfaces.IRepository.IAuthenticationRepo.IDonorRepo;
 using BloodBank.Application.Interfaces.IServices.IAuthenticationService.Donor;
+using BloodBank.Application.Interfaces.IServices.IHelperService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,24 +15,36 @@ namespace BloodBank.Application.Services.AuthenticationService.Donor
     public class DonorRegistrationService : IDonorRegistrationService
     {
         private readonly IDonorRegistration donorRegistration;
-        public DonorRegistrationService(IDonorRegistration donor)
+        private readonly IUserValidationService userValidationService;
+        public DonorRegistrationService(IDonorRegistration donor,IUserValidationService userValidation)
         {
             donorRegistration = donor;
+            userValidationService = userValidation;
         }
         public async  Task<ApiResponse<object>> DonorRegister(DonorDto donor)
         {
             try
             {
-                var Age = donor.DOB.Year - DateTime.Now.Year;
+                var Age = DateTime.Now.Year-donor.DOB.Year ;
                 if (donor.DOB.Date > DateTime.Now.AddYears(-Age)) Age--;
                 if (Age < 18) return new ApiResponse<object>("Your not eligible to donate", 200, false);
-                var result = await donorRegistration.RegisterDonor(donor);
-                if (result)
+                if (await userValidationService.IsUserExistsAsync(donor.Name, donor.Phone))
                 {
-                    return new ApiResponse<object>("Registration Successful", 200,true);
-                }
-                return new ApiResponse<object>("Registration Failed", 200,true);
 
+
+                    var result = await donorRegistration.RegisterDonor(donor);
+                    if (result)
+                    {
+                        return new ApiResponse<object>("Registration Successful", 200, true);
+                    }
+                    return new ApiResponse<object>("Registration Failed", 200, true);
+                }
+                else
+                {
+                    return new ApiResponse<object>("User Already exist", 200, false);
+
+
+                }
             }
             catch (Exception ex)
             {

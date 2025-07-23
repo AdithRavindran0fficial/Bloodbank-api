@@ -1,5 +1,6 @@
 ﻿using BloodBank.Application.DTOs.AuthenticationDTO.DonorDTO;
 using BloodBank.Application.Interfaces.IRepository.IAuthenticationRepo.IDonorRepo;
+using BloodBank.Application.Services.HelperService.Password_Bcrypt;
 using BloodBank.Domain.Model.DonorModels;
 using BloodBank.Infrastructure.DbContext;
 using Dapper;
@@ -14,9 +15,11 @@ namespace BloodBank.Infrastructure.AuthenticationRepo.DonorRepo
     public class DonorRegistration : IDonorRegistration
     {
         private readonly DapperContext dapperContext;
-        public DonorRegistration(DapperContext context)
+        private readonly IPasswordHash passwordHash;
+        public DonorRegistration(DapperContext context,IPasswordHash password)
         {
             dapperContext = context;
+            passwordHash = password;
         }
         public async Task<bool> RegisterDonor(DonorDto donor)
         {
@@ -33,9 +36,10 @@ namespace BloodBank.Infrastructure.AuthenticationRepo.DonorRepo
                         IsAllowed = true,
                         IsBlocked = false,
                         LastDonation = null,
-                        Password = donor.Password,
+                        Password = passwordHash.PassWordHash(donor.Password),
                         CreatedAt = DateTime.UtcNow
                     };
+                 
 
                  
                     var sql = "INSERT INTO Donor VALUES (@Name, @Phone, @IsAllowed, @CreatedAt, @LastDonation, @IsBlocked, @Dob,@BloodGroup,@Password)";
