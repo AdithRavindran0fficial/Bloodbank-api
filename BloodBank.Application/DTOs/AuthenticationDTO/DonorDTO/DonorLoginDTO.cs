@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace BloodBank.Application.DTOs.AuthenticationDTO.DonorDTO
 {
-    public class DonorLoginDTO
+    public  class DonorLoginDTO
     {
         [Required]
         public string? Phone { get; set; }
 
         [Required]
-        public string? Password { get; set; }
+        public string? Password { get; set; }    
     }
 }
