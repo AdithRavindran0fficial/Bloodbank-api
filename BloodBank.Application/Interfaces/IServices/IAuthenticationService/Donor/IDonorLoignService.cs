@@ -1,4 +1,5 @@
 ﻿using BloodBank.Application.Common.Response;
+using BloodBank.Application.DTOs.AuthenticationDTO.DonorDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace BloodBank.Application.Interfaces.IServices.IAuthenticationService.Dono
 {
     public interface IDonorLoignService
     {
-        Task<ApiResponse<Object>> DonorLogin(string username, string password);
+        Task<ApiResponse<Object>> DonorLogin(DonorLoginDTO donorLoginDTO);
     }
 }
