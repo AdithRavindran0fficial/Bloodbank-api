@@ -22,6 +22,7 @@ namespace BloodBank.Application.DTOs.AuthenticationDTO.DonorDTO
         [Required]
         [StringLength(10)]
         public string ? Phone { get; set; }
+        public int RoleId { get; set; }
       
     }
 }
