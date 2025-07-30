@@ -21,6 +21,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//builder.Services.AddAuthentication(option =>
+//{
+//    option.DefaultAuthenticateScheme = JwtBearer
+//})
+
+
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IBloodGroupRepository, BloodGroupRepository>();
 builder.Services.AddScoped<IBloodGroupService, BloodGroupService>();
