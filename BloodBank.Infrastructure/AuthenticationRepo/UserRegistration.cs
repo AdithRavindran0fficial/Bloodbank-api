@@ -21,13 +21,13 @@ namespace BloodBank.Infrastructure.AuthenticationRepo
             dapperContext = context;
             passwordHash = password;
         }
-        public async Task<bool> RegisterDonor(DonorDto donor)
+        public async Task<bool> RegisterDonor(UserDto donor)
         {
             try
             {
                 using(var connection = dapperContext.CreateConnection())
                 {
-                    var Donor = new DonorModel
+                    var Donor = new UserModel
                     {
                         Name = donor.Name,
                         Phone = donor.Phone,

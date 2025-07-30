@@ -21,14 +21,14 @@ namespace BloodBank.Infrastructure.AuthenticationRepo
             context = dapperContext;
         }
 
-        public async Task<DonorModel?> Login(DonorLoginDTO donor)
+        public async Task<UserModel?> Login(UserLoginDto donor)
         {
             try
             {
                 using (var connection = context.CreateConnection())
                 {
-                    var sql = "select * from Donor where Phone = @phone";
-                    var result = await connection.QueryFirstOrDefaultAsync<DonorModel?>(sql, new { phone = donor.Phone });
+                    var sql = "select * from Users where Phone = @phone";
+                    var result = await connection.QueryFirstOrDefaultAsync<UserModel?>(sql, new { phone = donor.Phone });
                     return result;
 
 
