@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BloodBank.Domain.Model.DonorModels
 {
-    public  class DonorModel
+    public  class UserModel
     {
         public int ID { get; set; }
         public string? Name { get; set; }
