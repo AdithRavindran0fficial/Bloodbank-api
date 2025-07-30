@@ -17,7 +17,7 @@ namespace BloodBank.Application.Services.AuthenticationService.Donor
         {
             donorLogin = donorLoginRepo;
         }
-        public async Task<ApiResponse<object>> DonorLogin(DonorLoginDTO donor)
+        public async Task<ApiResponse<object>> DonorLogin(UserLoginDto donor)
         {
             try
             {

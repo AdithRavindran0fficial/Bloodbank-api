@@ -21,7 +21,7 @@ namespace BloodBank.Application.Services.AuthenticationService.Donor
             donorRegistration = donor;
             userValidationService = userValidation;
         }
-        public async  Task<ApiResponse<object>> DonorRegister(DonorDto donor)
+        public async  Task<ApiResponse<object>> DonorRegister(UserDto donor)
         {
             try
             {
