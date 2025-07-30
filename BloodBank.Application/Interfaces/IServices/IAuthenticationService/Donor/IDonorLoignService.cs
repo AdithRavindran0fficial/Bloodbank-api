@@ -10,6 +10,6 @@ namespace BloodBank.Application.Interfaces.IServices.IAuthenticationService.Dono
 {
     public interface IDonorLoignService
     {
-        Task<ApiResponse<Object>> DonorLogin(DonorLoginDTO donorLoginDTO);
+        Task<ApiResponse<Object>> DonorLogin(UserLoginDto donorLoginDTO);
     }
 }
