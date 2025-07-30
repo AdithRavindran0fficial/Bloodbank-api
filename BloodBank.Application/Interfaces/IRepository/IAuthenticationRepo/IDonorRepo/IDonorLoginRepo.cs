@@ -10,6 +10,6 @@ namespace BloodBank.Application.Interfaces.IRepository.IAuthenticationRepo.IDono
 {
     public  interface IDonorLoginRepo
     {
-        Task<DonorModel?>Login(DonorLoginDTO donor);
+        Task<UserModel?>Login(UserLoginDto donor);
     }
 }

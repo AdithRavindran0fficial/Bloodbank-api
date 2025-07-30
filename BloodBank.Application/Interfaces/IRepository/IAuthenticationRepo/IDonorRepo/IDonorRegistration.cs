@@ -9,6 +9,6 @@ namespace BloodBank.Application.Interfaces.IRepository.IAuthenticationRepo.IDono
 {
     public  interface IDonorRegistration
     {
-        Task<bool> RegisterDonor(DonorDto donor);
+        Task<bool> RegisterDonor(UserDto donor);
     }
 }
