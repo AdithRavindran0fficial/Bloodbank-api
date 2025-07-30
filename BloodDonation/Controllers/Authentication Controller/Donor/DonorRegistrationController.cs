@@ -17,7 +17,7 @@ namespace BloodDonation.Controllers.Authentication_Controller.Donor
             
         }
         [HttpPost]
-        public async Task<IActionResult> RegisterDonor(DonorDto donor)
+        public async Task<IActionResult> RegisterDonor(UserDto donor)
         {
             try
             {
