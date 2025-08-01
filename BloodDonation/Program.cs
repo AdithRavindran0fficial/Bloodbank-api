@@ -12,6 +12,10 @@ using BloodBank.Infrastructure.AuthenticationRepo;
 using BloodBank.Infrastructure.Base_Repository;
 using BloodBank.Infrastructure.DbContext;
 using BloodBank.Infrastructure.HelperRepo;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +26,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddAuthentication(option =>
-//{
-//    option.DefaultAuthenticateScheme = JwtBearer
-//})
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(o =>
+    {
+        o.TokenValidationParameters = new TokenValidationParameters
+        {
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtConfig:Key"])),
+
+        };
+        
+    });
 
 
 builder.Services.AddSingleton<DapperContext>();
@@ -48,7 +58,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
