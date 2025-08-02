@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BloodBank.Infrastructure.AuthenticationRepo
 {
-    public class UserLoginRepo : IDonorLoginRepo
+    public class UserLoginRepo : IUserLoginRepo
     {
         DapperContext context;
         public UserLoginRepo(DapperContext dapperContext)
