@@ -8,8 +8,7 @@ namespace BloodBank.Application.DTOs.AuthenticationDTO.UserDTO
 {
     public class LoginResponse
     {
-        public string Token { get; set; }
-        public long Token_ExpiresIn { get; set; }
-        
+        public string? Token { get; set; }
+        public string? UserName { get; set; }
     }
 }
