@@ -41,8 +41,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IBloodGroupRepository, BloodGroupRepository>();
 builder.Services.AddScoped<IBloodGroupService, BloodGroupService>();
-builder.Services.AddScoped<IDonorRegistrationService, DonorRegistrationService>();
-builder.Services.AddScoped<IDonorRegistration, UserRegistration>();
+builder.Services.AddScoped<IDonorRegistrationService, UserRegistrationService>();
+builder.Services.AddScoped<IUserRegistration, UserRegistration>();
 builder.Services.AddScoped<IUserValidationRepo,UserValidationRepo>();
 builder.Services.AddScoped<IUserValidationService, UserValidationService>();  
 builder.Services.AddScoped<IPasswordHash,PasswordHash>();

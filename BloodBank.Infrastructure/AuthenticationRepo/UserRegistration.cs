@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BloodBank.Infrastructure.AuthenticationRepo
 {
-    public class UserRegistration : IDonorRegistration
+    public class UserRegistration : IUserRegistration
     {
         private readonly DapperContext dapperContext;
         private readonly IPasswordHash passwordHash;
