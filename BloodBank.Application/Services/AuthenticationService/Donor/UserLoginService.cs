@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BloodBank.Application.Services.AuthenticationService.Donor
 {
-    public class UserLoginService : IDonorLoignService
+    public class UserLoginService : IUserLoignService
     {
         private readonly IUserLoginRepo donorLogin;
         private readonly ITokenProvider tokenProvider;
